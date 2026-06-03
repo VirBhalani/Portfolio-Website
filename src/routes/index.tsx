@@ -60,6 +60,14 @@ function Hero() {
               View My Work
               <span className="grid h-8 w-8 place-items-center bg-[var(--chartreuse)] text-black brutal-border transition-transform group-hover:translate-x-1">→</span>
             </a>
+            <a
+              href="https://drive.google.com/file/d/1hvrwHRS9YpwKxOb1BvtS0LSPfuP-jiD8/view?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
+              className="brutal-border bg-white px-5 py-4 font-mono text-sm font-bold brutal-shadow-sm brutal-press invert-hover"
+            >
+              View My Resume
+            </a>
             <Link to="/about" className="brutal-border bg-white px-5 py-4 font-mono text-sm font-bold brutal-shadow-sm brutal-press invert-hover">
               About / Leadership
             </Link>
