@@ -1,7 +1,6 @@
-Portfolio Website
-A personal portfolio built with React + TypeScript and Vite.
+# Portfolio Website
 
-It uses TanStack Router for routing and Tailwind CSS for styling.
+A personal portfolio built with **React + TypeScript** and **Vite**. It uses **TanStack Router** for routing and **Tailwind CSS** for styling.
 
 Features
 Fixed “brand mark” in the top-right corner on every page
