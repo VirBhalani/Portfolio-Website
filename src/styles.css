@@ -1,0 +1,144 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ink: var(--ink);
+  --color-sand: var(--sand);
+  --color-indigo-pop: var(--indigo-pop);
+  --color-chartreuse: var(--chartreuse);
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+:root {
+  --radius: 0px;
+  --sand: oklch(0.96 0.01 95);
+  --ink: oklch(0 0 0);
+  --indigo-pop: oklch(0.45 0.29 280);
+  --chartreuse: oklch(0.95 0.27 122);
+
+  --background: var(--sand);
+  --foreground: var(--ink);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--ink);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--ink);
+  --primary: var(--indigo-pop);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: var(--chartreuse);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.93 0.01 95);
+  --muted-foreground: oklch(0.4 0.02 95);
+  --accent: var(--chartreuse);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.6 0.25 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: var(--ink);
+  --input: var(--ink);
+  --ring: var(--indigo-pop);
+
+  --shadow-brutal: 8px 8px 0 0 var(--ink);
+  --shadow-brutal-sm: 4px 4px 0 0 var(--ink);
+  --shadow-brutal-lg: 14px 14px 0 0 var(--ink);
+  --shadow-brutal-indigo: 8px 8px 0 0 var(--indigo-pop);
+  --shadow-brutal-chartreuse: 8px 8px 0 0 var(--chartreuse);
+}
+
+.dark { color-scheme: light; }
+
+@layer base {
+  * { border-color: var(--ink); }
+  html, body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-mono);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .brutal-border { border: 3px solid var(--ink); }
+  .brutal-border-thick { border: 4px solid var(--ink); }
+  .brutal-shadow { box-shadow: var(--shadow-brutal); }
+  .brutal-shadow-sm { box-shadow: var(--shadow-brutal-sm); }
+  .brutal-shadow-lg { box-shadow: var(--shadow-brutal-lg); }
+  .brutal-shadow-indigo { box-shadow: var(--shadow-brutal-indigo); }
+  .brutal-shadow-chartreuse { box-shadow: var(--shadow-brutal-chartreuse); }
+  .brutal-press {
+    transition: transform 120ms ease, box-shadow 120ms ease;
+  }
+  .brutal-press:hover { transform: translate(-2px, -2px); box-shadow: 12px 12px 0 0 var(--ink); }
+  .brutal-press:active { transform: translate(6px, 6px); box-shadow: 2px 2px 0 0 var(--ink); }
+  .invert-hover { transition: background-color 120ms, color 120ms; }
+  .invert-hover:hover { background-color: var(--ink); color: var(--sand); }
+  .grid-bg {
+    background-image:
+      linear-gradient(var(--ink) 1px, transparent 1px),
+      linear-gradient(90deg, var(--ink) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: -1px -1px;
+    opacity: 0.06;
+  }
+  .dot-bg {
+    background-image: radial-gradient(var(--ink) 1.2px, transparent 1.2px);
+    background-size: 18px 18px;
+  }
+  .text-stroke {
+    -webkit-text-stroke: 2px var(--ink);
+    color: transparent;
+  }
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: 2rem;
+  }
+  .marquee-track {
+    flex-shrink: 0;
+    display: flex;
+    gap: 2rem;
+    min-width: 100%;
+    animation: marquee 22s linear infinite;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+  .marquee-reverse .marquee-track { animation-direction: reverse; }
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0) rotate(var(--r,0deg)); }
+    50% { transform: translateY(-12px) rotate(var(--r,0deg)); }
+  }
+  .floaty { animation: floaty 6s ease-in-out infinite; }
+  @keyframes spin-slow { to { transform: rotate(360deg); } }
+  .spin-slow { animation: spin-slow 18s linear infinite; }
+}
