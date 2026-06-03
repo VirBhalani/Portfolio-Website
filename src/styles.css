@@ -127,7 +127,7 @@
     display: flex;
     gap: 2rem;
     min-width: 100%;
-    animation: marquee 22s linear infinite;
+    animation: marquee 40s linear infinite;
   }
   @keyframes marquee {
     from { transform: translateX(0); }

@@ -66,51 +66,64 @@ function ProjectsPage() {
 
 function HeroAtlas() {
   const items = [
-    { id: "01", name: "GPay UX", score: 1, color: "var(--chartreuse)", to: "#gpay" },
-    { id: "02", name: "APEX 0110", score: 2, color: "var(--indigo-pop)", to: "#apex" },
-    { id: "03", name: "MACRC", score: 3, color: "black", to: "#macrc", fg: "text-[var(--sand)]" },
+    {
+      id: "01",
+      name: "GPay UX",
+      href: "https://www.figma.com/proto/o5MRaCHX3pb10lFcvk7CRU/Gpay-Prototype?node-id=2-3&p=f&t=C5cXLf5yWHX4quuz-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=49%3A1396",
+      desc: "Figma prototype",
+      color: "var(--chartreuse)",
+    },
+    {
+      id: "02",
+      name: "APEX 0110",
+      href: "https://github.com/SPIT-Hackathon-2026/APEX-0100",
+      desc: "GitHub repo",
+      color: "var(--indigo-pop)",
+      fg: "text-white",
+    },
+    {
+      id: "03",
+      name: "MACRC",
+      href: "https://github.com/VirBhalani/Portfolio-Website",
+      desc: "Project repo",
+      color: "black",
+      fg: "text-[var(--sand)]",
+    },
   ];
 
   return (
     <div className="brutal-border-thick brutal-shadow-lg bg-white overflow-hidden">
       <div className="border-b-[3px] border-black bg-black px-4 py-3 font-mono text-[11px] uppercase text-[var(--chartreuse)]">
-        Project Signal Board
+        Project Links
       </div>
       <div className="p-4 space-y-3">
-        {items.map((item, idx) => (
+        {items.map((item) => (
           <a
             key={item.id}
-            href={item.to}
+            href={item.href}
+            target="_blank"
+            rel="noreferrer"
             className="block brutal-border p-3 bg-[var(--sand)] hover:-translate-y-0.5 transition-transform"
           >
             <div className="flex items-center justify-between gap-3">
               <div>
-                <div className="font-mono text-[10px] uppercase opacity-70">Track {item.id}</div>
+                <div className="font-mono text-[10px] uppercase opacity-70">Project {item.id}</div>
                 <div className="font-display text-xl font-bold uppercase">{item.name}</div>
+                <div className="mt-1 font-mono text-xs uppercase opacity-70">{item.desc}</div>
               </div>
               <div
                 className={`brutal-border px-2 py-1 font-mono text-xs font-bold uppercase ${item.fg ?? "text-black"}`}
                 style={{ backgroundColor: item.color }}
               >
-                {item.score}
+                Open
               </div>
-            </div>
-            <div className="mt-3 brutal-border h-3 bg-white">
-              <motion.div
-                initial={{ width: 0 }}
-                whileInView={{ width: `${item.score}%` }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: idx * 0.08 }}
-                className="h-full"
-                style={{ backgroundColor: item.color }}
-              />
             </div>
           </a>
         ))}
       </div>
       <div className="border-t-[3px] border-black p-4 bg-[var(--chartreuse)]">
         <p className="font-mono text-xs uppercase">
-          Select the project to visit
+          Explore the source or prototype for each project
         </p>
       </div>
     </div>
@@ -444,6 +457,8 @@ function GPayBlock() {
           ))}
         </div>
       </div>
+
+      <div className="mt-16 border-t border-black/50" />
     </section>
   );
 }
@@ -573,6 +588,7 @@ function ApexBlock() {
           <p className="mt-3 font-mono text-sm md:text-base">
             When light hits skin, sub-pixel color shifts reveal the cardiac cycle — invisible to the eye, measurable by a camera. GANs trained on visual textures don't model hemodynamics, so generated faces lack a coherent pulse signal.
           </p>
+          <p className="mt-4 font-mono text-sm md:text-base italic">Something here.</p>
           <div className="mt-4 flex flex-wrap gap-2">
             {["OpenCV", "PyTorch", "FastAPI", "ONNX", "React + D3"].map(t => <Sticker key={t} color="var(--sand)">{t}</Sticker>)}
           </div>
@@ -610,6 +626,8 @@ function ApexBlock() {
           Confidence thresholds are explicit, and the interface encourages secondary review for low-signal cases.
         </Card>
       </div>
+
+      <div className="mt-16 border-t border-black/50" />
     </section>
   );
 }
@@ -808,11 +826,14 @@ function MacrcBlock() {
         </div>
       </div>
 
+      <div className="mt-16 border-t border-black/50" />
       <div className="mt-16 text-center">
         <Link to="/" className="inline-flex items-center gap-3 brutal-border-thick bg-[var(--chartreuse)] px-6 py-4 font-display text-xl font-bold uppercase brutal-shadow-lg brutal-press">
           ← Back to Home
         </Link>
       </div>
+
+      <div className="mt-16 border-t border-black/50" />
     </section>
   );
 }
